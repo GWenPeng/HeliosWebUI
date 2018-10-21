@@ -44,7 +44,7 @@ class LoginPage(BasePage):
         self.findElement(self.password_loc).send_keys(password)
 
     # 点击登录按钮
-    def click_loginButton(self):
+    def submit(self):
         self.findElement(self.loginButton_loc).click()
 
     # 普通登录组合方法
