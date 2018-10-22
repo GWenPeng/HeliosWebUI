@@ -1,6 +1,6 @@
 from selenium import webdriver
 import unittest
-from  pages.LoginPage.LoginPage import *
+from  pages.LoginPage import *
 
 def test_Login_success():
     lg= LoginPage(seleniumDriver='..\\Drivers\\chromedriver.exe',baseUrl="https://console.huilianyi.com/#/login")

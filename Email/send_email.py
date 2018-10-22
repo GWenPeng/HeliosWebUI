@@ -7,7 +7,7 @@ class Send_email_HTML:
     def config(self):
        smtpserver='smtp.partner.outlook.cn'
        user='wenpeng.gu@huilianyi.com'
-       password='12240Peng'
+       password=''
        sender='wenpeng.gu@huilianyi.com'
        receiver='1509328341@qq.com'
        subject='test report'
