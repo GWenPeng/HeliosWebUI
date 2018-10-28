@@ -47,12 +47,13 @@ class LoginPage(BasePage):
     def submit(self):
         self.findElement(self.loginButton_loc).click()
 
+
     # 普通登录组合方法
     def login(self, username, password):
         self.open()
         self.input_username(username)
         self.input_password(password)
-        self.click_loginButton()
+        self.submit()
 
     # 打开网页
     def open(self):

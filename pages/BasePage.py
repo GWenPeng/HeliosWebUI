@@ -9,18 +9,20 @@ description: 基类页面，封装其他所有页面所用到的公用属性和�
 
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-
+import unittest
+from selenium import  webdriver
 
 class BasePage(object):
 
-    def __init__(self, seleniumDriver, baseUrl):
-        self.driver = seleniumDriver
+    def __init__(self,seleniumDriver='.\\Drivers\\chromedriver.exe',baseUrl="https://console.huilianyi.com/#/login"):
+        self.driver = webdriver.Chrome(seleniumDriver)
         self.baseUrl = baseUrl
         #self.pageTitle = pageTitle
 
+
     # 通过title断言进入的页面是否正确
     def check_page_title(self, pageTitle):
-        return pageTitle in self.driver.title
+        return pageTitle in self.driver.title()
 
     # 打开页面，并校验页面链接是否加载正确
     def _open(self, url):
