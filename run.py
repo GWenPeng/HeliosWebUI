@@ -6,6 +6,7 @@ import unittest
 import common.HTMLTestRunner
 from common.loggen import Logger
 import unittest
+from Email.send_email import Send_email_Attachment
 from unittest import TestLoader
 
 from testcases.TestLogin import TestLogin
@@ -47,3 +48,4 @@ if __name__ == '__main__':
 
     running.run(discover)
     file_result.close()
+    Send_email_Attachment(sendfile=file_path, ).Send_email()
