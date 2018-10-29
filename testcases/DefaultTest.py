@@ -1,5 +1,5 @@
 import unittest
-from  BasePage import BasePage
+
 
 class DefaulTest(unittest.TestCase):
     def setUp(self):
