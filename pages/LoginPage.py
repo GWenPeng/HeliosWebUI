@@ -7,7 +7,7 @@ description: 中控登录页面的元素与操作方法
 '''
 
 from selenium.webdriver.common.by import By
-from BasePage import BasePage
+from .BasePage import BasePage
 
 
 class LoginPage(BasePage):
