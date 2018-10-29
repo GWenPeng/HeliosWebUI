@@ -1,6 +1,6 @@
 import unittest
-from  ..pages.LoginPage import LoginPage
-from ..testcases.DefaultTest import DefaulTest
+from  .pages.LoginPage import LoginPage
+from .testcases.DefaultTest import DefaulTest
 from common.loggen import Logger
 class TestLogin(DefaulTest):
    def test_Login_success(self):
