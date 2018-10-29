@@ -1,20 +1,16 @@
-
 import unittest
-
-
+from  BasePage import BasePage
 
 class DefaulTest(unittest.TestCase):
     def setUp(self):
-        print('Start Testing测试开始')
+        print('Start Testing')
 
 
     def tearDown(self):
-        # self.driver.quit()
-        print('End Testing测试完成')
+        # BasePage.browser_quit()
+        print('End Testing')
 
 
 
 
-def test_Login_success(self, lg):
-    lg.open()
-    lg.login('13323454321', 'hly123')
+

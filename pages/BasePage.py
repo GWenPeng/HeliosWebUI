@@ -15,8 +15,12 @@ from selenium import  webdriver
 class BasePage(object):
 
     def __init__(self,seleniumDriver='.\\Drivers\\chromedriver.exe',baseUrl="https://console.huilianyi.com/#/login"):
-        self.driver = webdriver.Chrome(seleniumDriver)
+        # self.driver = webdriver.Chrome(seleniumDriver)
         self.baseUrl = baseUrl
+        self.driver=webdriver.Remote(
+            command_executor='http://47.100.188.71:4444/wd/hub',
+            desired_capabilities={'browserName': 'chrome'}
+        )
         #self.pageTitle = pageTitle
 
 
@@ -34,6 +38,9 @@ class BasePage(object):
     # 定义open方法，调用_open()进行打开链接
     def open(self):
         self._open(self.baseUrl)
+
+    def browser_quit(self):
+        self.driver.quit()
 
     # 定位页面元素的方法
     def findElement(self, loc):
