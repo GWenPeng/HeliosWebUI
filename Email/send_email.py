@@ -7,7 +7,7 @@ class Send_email_HTML:
     def config(self):
        smtpserver='smtp.partner.outlook.cn'
        user='wenpeng.gu@huilianyi.com'
-       password=''
+       password='12240peng'
        sender='wenpeng.gu@huilianyi.com'
        receiver='1509328341@qq.com'
        subject='test report'
@@ -29,14 +29,14 @@ class Send_email_HTML:
        except smtplib.SMTPException:
          print("邮件发送失败")
 class Send_email_Attachment:
-    def __init__(self):
+    def __init__(self,sendfile):
         self.smtpserver = 'smtp.partner.outlook.cn'
         self.user = 'wenpeng.gu@huilianyi.com'
         self.password = '12240Peng'
         self.sender = 'wenpeng.gu@huilianyi.com'
         self.receiver = '1509328341@qq.com'
         self.subject = '邮件主题！！'
-        self.sendfile=open("./testresult.html",'rb').read()
+        self.sendfile=open(sendfile,'rb').read()
     def attach_setup(self):
         att=MIMEText(self.sendfile,'html','utf-8')
         att['Content-Type']='application/octet-stream'
