@@ -11,16 +11,20 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 import unittest
 from selenium import  webdriver
-
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class BasePage(object):
 
     def __init__(self,seleniumDriver='.\\Drivers\\chromedriver.exe',baseUrl="https://console.huilianyi.com/#/login"):
         # self.driver = webdriver.Chrome(seleniumDriver)
+        # create capabilities
+        capabilities = DesiredCapabilities.CHROME
+
+        # delete platform and version keys
+        capabilities.pop("platform", None)
+        capabilities.pop("version", None)
         self.baseUrl = baseUrl
-        self.driver=webdriver.Remote(
-            command_executor='http://47.100.188.71:4444/wd/hub',
-            desired_capabilities={'browserName': 'chrome'}
-        )
+        self.driver=webdriver.Remote(command_executor='http://47.100.188.71:4444/wd/hub',
+            desired_capabilities=capabilities)
         #self.pageTitle = pageTitle
 
 
