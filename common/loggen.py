@@ -16,9 +16,9 @@ class Logger(object):
         rq=time.strftime('%Y%m%d%H%M',time.localtime(time.time()))
         log_path=os.path.abspath('.')+'\\logs\\'
         #print(log_path)
-
+        # file_hanlder = logging.FileHandler(filename='example.log', encoding='utf-8')
         log_name=log_path+rq+'.log'
-        fh=logging.FileHandler(log_name)
+        fh=logging.FileHandler(log_name,encoding='utf-8')
         fh.setLevel(logging.INFO)
 
         #再创建一个handler,用于输出到控制台

@@ -2,6 +2,7 @@ import smtplib
 from email.mime.text import  MIMEText
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
+from common.loggen import Logger
 
 class Send_email_HTML:
     def config(self):
@@ -55,13 +56,18 @@ class Send_email_Attachment:
         smtp.login(self.user,self.password)
         smtp.sendmail(self.sender,self.receiver,self.attach_setup())
         smtp.quit()
-      except smtplib.SMTPException:
-          print("邮件发送失败！！")
+        rg=Logger('日志文件')
+        # raise smtplib.SMTPException('类型错误')
+      except smtplib.SMTPException as e:
+          rg.getlog().exception("邮件发送失败！！",e)
+      else:
+          rg.getlog().info("邮件发送成功！！")
 
 
 
-if __name__ == '__main__':
-    # Send=Send_email_HTML()
-    # Send.config()
-     send=Send_email_Attachment()
-     send.Send_email()
+
+# if __name__ == '__main__':
+#     # Send=Send_email_HTML()
+#     # Send.config()
+#      send=Send_email_Attachment()
+#      send.Send_email()

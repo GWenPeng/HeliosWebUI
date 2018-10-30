@@ -9,22 +9,18 @@ description: 基类页面，封装其他所有页面所用到的公用属性和�
 
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-import unittest
+# import unittest
 from selenium import  webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+# from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class BasePage(object):
 
-    def __init__(self,seleniumDriver='.\\Drivers\\chromedriver.exe',baseUrl="https://console.huilianyi.com/#/login"):
-        # self.driver = webdriver.Chrome(seleniumDriver)
+    def __init__(self,seleniumDriver, baseUrl="https://console.huilianyi.com/#/login"):
+        self.driver = seleniumDriver
         # create capabilities
-        capabilities = DesiredCapabilities.CHROME
-
-        # delete platform and version keys
-        capabilities.pop("platform", None)
-        capabilities.pop("version", None)
+        # capabilities = DesiredCapabilities.CHROME
         self.baseUrl = baseUrl
-        self.driver=webdriver.Remote(command_executor='http://47.100.188.71:4444/wd/hub',
-            desired_capabilities=capabilities)
+        # self.driver=webdriver.Remote(command_executor='http://47.100.188.71:4444/wd/hub',
+        #     desired_capabilities=capabilities)
         #self.pageTitle = pageTitle
 
 
@@ -33,7 +29,7 @@ class BasePage(object):
         return pageTitle in self.driver.title()
 
     # 打开页面，并校验页面链接是否加载正确
-    def _open(self, url):
+    def _open(self,url):
         self.driver.get(url)
         self.driver.maximize_window()
 

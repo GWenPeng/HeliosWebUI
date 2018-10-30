@@ -2,15 +2,15 @@
 from scripts import *
 import  time
 import os.path
-import unittest
+# import unittest
 import common.HTMLTestRunner
 from common.loggen import Logger
 import unittest
 from Email.send_email import Send_email_Attachment
-from unittest import TestLoader
+# from unittest import TestLoader
 
-from testcases.TestLogin import TestLogin
-import logging
+# from testcases.TestLogin import TestLogin
+# import logging
 
 # class Runner(unittest.TestCase):
 #     def setUp(self):
@@ -26,7 +26,7 @@ import logging
 
 
 if __name__ == '__main__':
-    suite=unittest.TestSuite()
+    # suite=unittest.TestSuite()
     """
      suite = unittest.TestSuite()
  　　suite.addTest(TestLogin('test_Login_success'))
@@ -52,12 +52,7 @@ if __name__ == '__main__':
         lg.getlog().info('测试报告生成失败')
     else:
         lg.getlog().info('测试报告生成成功')
-
-    try:
         lg.getlog().info('邮件正在发送')
         Send_email_Attachment(sendfile=file_path, ).Send_email()
-    except Exception as e:
-        lg.getlog().error('邮件发送失败'+e)
-    else:
-        lg.getlog().info('邮件发送成功')
+
 
