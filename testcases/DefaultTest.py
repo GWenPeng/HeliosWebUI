@@ -1,15 +1,21 @@
 import unittest
 from common.loggen import Logger
-from  pages.BasePage import  BasePage
-class DefaulTest():
-    # bp=BasePage(seleniumDriver='.\\Drivers\\chromedriver.exe', baseUrl="https://console.huilianyi.com/#/login")
-    def setUp(self):
-        # self.bp.open()
+from selenium import  webdriver
+class DefaulTest(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+
+        cls.driver = webdriver.Chrome()
+        cls.url="https://console.huilianyi.com/#/login"
+        cls.driver.implicitly_wait(30)
+        cls.driver.maximize_window()
+        # cls.driver.get('https://console.huilianyi.com/#/login')
         Logger("日志文件").getlog().info('Start Testing')
 
-
-    def tearDown(self):
-         BasePage().browser_quit()
+    @classmethod
+    def tearDownClass(cls):
+         cls.driver.quit()
          Logger("日志文件").getlog().info('End Testing')
 
 
