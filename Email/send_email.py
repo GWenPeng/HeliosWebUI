@@ -32,11 +32,17 @@ class Send_email_HTML:
           print("邮件发送失败")
 class Send_email_Attachment:
     def __init__(self,sendfile):
-        self.smtpserver = 'smtp.partner.outlook.cn'
-        self.user = 'wenpeng.gu@huilianyi.com'
-        self.password = '12240Peng'
-        self.sender = 'wenpeng.gu@huilianyi.com'
-        self.receivers =["1509328341@qq.com",'wenpeng.gu@huilianyi.com']
+        self.smtpserver ="smtpdm.aliyun.com"
+        # self.port=80
+        self.user = 'notice@service.huilianyi.com'
+        self.password = 'ZhenHui2017'
+        self.sender = 'notice@service.huilianyi.com'
+        self.receivers =["yan.huang03@hand-china.com",
+                         'wenpeng.gu@huilianyi.com',
+                         "yuxiong.ding@huilianyi.com",
+                         "gang.liu@huilianyi.com",
+                         "ziao.shen@huilianyi.com",
+                         "changyuan.tang@huilianyi.com"]
         self.subject = '邮件主题！！'
         self.sendfile=open(sendfile,'rb').read()
         # self.msg = MIMEText('<html><h1>stage 环境自动化测试报告汇总，请查看附件</h1></html>', 'html', 'utf-8')
@@ -44,8 +50,8 @@ class Send_email_Attachment:
     def attach_setup(self):
         att=MIMEText(self.sendfile,'html','utf-8')
         att['Content-Type']='application/octet-stream'
-        att['Content-Disposition']='attachment;filename="testresult.html"'
-        msg = MIMEText("Web UI自动化测试报告，请查看附件！！",_subtype='plain',_charset='utf-8')
+        att['Content-Disposition']='attachment;filename="Web_UI_Report_result.html"'
+        msg = MIMEText("Web UI自动化报告，请勿回复！！",_subtype='plain',_charset='utf-8')
         #添加邮件正文
         #msgRoot=MIMEMultipart('related')
         #对于multipart类型，下面有三种子类型：mixed、alternative、related
@@ -55,7 +61,7 @@ class Send_email_Attachment:
         #
         # multipart/alternative 纯文本与超文本共存
         msgRoot=MIMEMultipart()
-        msgRoot['Subject']=Header('自动化测试报告','utf-8')
+        msgRoot['Subject']=Header('自动化报告','utf-8')
         msgRoot.attach(att)
         msgRoot.attach(msg)
         return msgRoot.as_string()
@@ -63,11 +69,11 @@ class Send_email_Attachment:
     def Send_email(self):
       try:
         smtp=smtplib.SMTP()
-        smtp.connect(self.smtpserver,587)
+        smtp.connect(self.smtpserver)
         smtp.ehlo()
-        smtp.starttls()
+        # smtp.starttls()
         smtp.login(self.user,self.password)
-        smtp.sendmail(self.sender,self.receivers,self.attach_setup())
+        smtp.sendmail(self.sender,self.receivers,msg=self.attach_setup())
 
         smtp.quit()
 
