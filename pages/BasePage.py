@@ -10,7 +10,7 @@ description: 基类页面，封装其他所有页面所用到的公用属性和�
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 # import unittest
-from selenium import  webdriver
+# from selenium import  webdriver
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class BasePage(object):
 
