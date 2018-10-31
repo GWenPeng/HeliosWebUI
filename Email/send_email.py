@@ -44,7 +44,9 @@ class Send_email_Attachment:
                          "yuxiong.ding@huilianyi.com",
                          "gang.liu@huilianyi.com",
                          "ziao.shen@huilianyi.com",
-                         "changyuan.tang@huilianyi.com"]
+                         "changyuan.tang@huilianyi.com",
+                         "chuanlin.li@huilianyi.com"
+                         ]
         self.subject = '邮件主题！！'
         self.sendfile=open(sendfile,'rb').read()
         # self.msg = MIMEText('<html><h1>stage 环境自动化测试报告汇总，请查看附件</h1></html>', 'html', 'utf-8')
