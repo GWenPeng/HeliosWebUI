@@ -11,7 +11,7 @@ class Send_email_HTML:
        user='wenpeng.gu@huilianyi.com'
        password='12240peng'
        sender='wenpeng.gu@huilianyi.com'
-       receiver='1509328341@qq.com'
+       receiver=''
        subject='test report'
 
        msg=MIMEText('<html><h1>test repost!!!!</h1></html>','html','utf-8')
@@ -29,23 +29,35 @@ class Send_email_HTML:
         print("邮件发送成功")
         smtp.quit()
        except smtplib.SMTPException:
-         print("邮件发送失败")
+          print("邮件发送失败")
 class Send_email_Attachment:
     def __init__(self,sendfile):
         self.smtpserver = 'smtp.partner.outlook.cn'
         self.user = 'wenpeng.gu@huilianyi.com'
         self.password = '12240Peng'
         self.sender = 'wenpeng.gu@huilianyi.com'
-        self.receiver = '1509328341@qq.com'
+        self.receivers =["1509328341@qq.com",'wenpeng.gu@huilianyi.com']
         self.subject = '邮件主题！！'
         self.sendfile=open(sendfile,'rb').read()
+        # self.msg = MIMEText('<html><h1>stage 环境自动化测试报告汇总，请查看附件</h1></html>', 'html', 'utf-8')
+        # self.msg['subject'] = Header(self.subject, 'utf-8')
     def attach_setup(self):
         att=MIMEText(self.sendfile,'html','utf-8')
         att['Content-Type']='application/octet-stream'
         att['Content-Disposition']='attachment;filename="testresult.html"'
-        msgRoot=MIMEMultipart('related')
+        msg = MIMEText("Web UI自动化测试报告，请查看附件！！",_subtype='plain',_charset='utf-8')
+        #添加邮件正文
+        #msgRoot=MIMEMultipart('related')
+        #对于multipart类型，下面有三种子类型：mixed、alternative、related
+        # multipart/mixed可以包含附件。
+        #
+        # multipart/related可以包含内嵌资源。
+        #
+        # multipart/alternative 纯文本与超文本共存
+        msgRoot=MIMEMultipart()
         msgRoot['Subject']=Header('自动化测试报告','utf-8')
         msgRoot.attach(att)
+        msgRoot.attach(msg)
         return msgRoot.as_string()
 
     def Send_email(self):
@@ -55,12 +67,12 @@ class Send_email_Attachment:
         smtp.ehlo()
         smtp.starttls()
         smtp.login(self.user,self.password)
-        smtp.sendmail(self.sender,self.receiver,self.attach_setup())
+        smtp.sendmail(self.sender,self.receivers,self.attach_setup())
+
         smtp.quit()
-        # rg=Logger('日志文件')
-        # raise smtplib.SMTPException('类型错误')
-      except smtplib.SMTPException as e:
-          module_logger.exception("邮件发送失败！！",e)
+
+      except smtplib.SMTPException :
+          module_logger.exception("邮件发送失败！！",exc_info=True)
       else:
           module_logger.info("邮件发送成功！！")
 
