@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # 添加并执行测试类
     discover=unittest.defaultTestLoader.discover(start_dir="./testcases",pattern="Test*.py",top_level_dir=None)
     rq=time.strftime('%Y%m%d%H%M',time.localtime(time.time()))
-    file_path=os.path.abspath('.')+'\\report\\'+rq+'-result.html'
+    file_path=os.path.abspath('.')+'/report/'+rq+'-result.html'
     file_result=open(file_path,'wb')
 
     try:

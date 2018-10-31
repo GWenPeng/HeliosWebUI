@@ -16,7 +16,7 @@ logger.setLevel(logging.INFO)
 
         #创建一个handler,用于写入日志文件
 rq=time.strftime('%Y%m%d%H%M',time.localtime(time.time()))
-log_path=os.path.abspath('.')+'\\logs\\'
+log_path=os.path.abspath('.')+'／logs／'
         #print(log_path)
         # file_hanlder = logging.FileHandler(filename='example.log', encoding='utf-8')
 log_name=log_path+rq+'.log'
