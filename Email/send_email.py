@@ -32,9 +32,11 @@ class Send_email_HTML:
           print("邮件发送失败")
 class Send_email_Attachment:
     def __init__(self,sendfile):
-        self.smtpserver ="smtpdm.aliyun.com"
-        # self.port=80
+        # self.smtpserver ="smtp.partner.outlook.cn"
+        self.smtpserver = "smtpdm.aliyun.com"
+        self.port=80
         self.user = 'notice@service.huilianyi.com'
+        # self.user = 'wenpeng.gu@huilianyi.com'
         self.password = 'ZhenHui2017'
         self.sender = 'notice@service.huilianyi.com'
         self.receivers =["yan.huang03@hand-china.com",
@@ -69,7 +71,7 @@ class Send_email_Attachment:
     def Send_email(self):
       try:
         smtp=smtplib.SMTP()
-        smtp.connect(self.smtpserver)
+        smtp.connect(self.smtpserver,port=self.port)
         smtp.ehlo()
         # smtp.starttls()
         smtp.login(self.user,self.password)
