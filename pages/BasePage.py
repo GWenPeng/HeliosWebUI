@@ -9,21 +9,27 @@ description: 基类页面，封装其他所有页面所用到的公用属性和�
 
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-
-
+# import unittest
+# from selenium import  webdriver
+# from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class BasePage(object):
 
-    def __init__(self, seleniumDriver, baseUrl):
+    def __init__(self,seleniumDriver, baseUrl="https://console.huilianyi.com/#/login"):
         self.driver = seleniumDriver
+        # create capabilities
+        # capabilities = DesiredCapabilities.CHROME
         self.baseUrl = baseUrl
+        # self.driver=webdriver.Remote(command_executor='http://47.100.188.71:4444/wd/hub',
+        #     desired_capabilities=capabilities)
         #self.pageTitle = pageTitle
+
 
     # 通过title断言进入的页面是否正确
     def check_page_title(self, pageTitle):
-        return pageTitle in self.driver.title
+        return pageTitle in self.driver.title()
 
     # 打开页面，并校验页面链接是否加载正确
-    def _open(self, url):
+    def _open(self,url):
         self.driver.get(url)
         self.driver.maximize_window()
 
@@ -32,6 +38,9 @@ class BasePage(object):
     # 定义open方法，调用_open()进行打开链接
     def open(self):
         self._open(self.baseUrl)
+
+    def browser_quit(self):
+        self.driver.quit()
 
     # 定位页面元素的方法
     def findElement(self, loc):
