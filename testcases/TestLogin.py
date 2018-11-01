@@ -7,7 +7,7 @@ class TestLogin(DefaulTest):
 
    def test_Login_success(self):
             lg=LoginPage(seleniumDriver=self.driver,baseUrl=self.url)
-            lg.login( "13323454321","hly123")
+            lg5.login( "13323454321","hly123")
             module_logger.info('登陆成功')
 
 
