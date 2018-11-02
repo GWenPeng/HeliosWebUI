@@ -12,7 +12,7 @@ from .BasePage import BasePage
 
 class LoginPage(BasePage):
 
-    # #############页面上的元素######################
+    # <----------------页面上的元素---------------->
     # 登录框
     username_loc = (By.CSS_SELECTOR, "input[type='text']")
     # 密码框
@@ -32,8 +32,10 @@ class LoginPage(BasePage):
     companyLoginUsername_loc = (By.XPATH, "//*[@id='app']/div/div[1]/div[2]/div[1]/div/div/input")
     # 企业登陆的下一步按钮
     nextStep_loc = (By.XPATH, "//*[@id='app']/div/div[1]/div[2]/div[1]/div/div/button")
+    # < ----------------页面上的元素 - --------------->
 
-    # #####################元素操作###########################
+
+    # < ----------------元素操作 - --------------->
     # 输入用户名
     def input_username(self, username):
         self.findElement(self.username_loc).clear()
@@ -47,7 +49,14 @@ class LoginPage(BasePage):
     def submit(self):
         self.findElement(self.loginButton_loc).click()
 
+    # 打开网页
+    def open(self):
+        self._open(self.baseUrl)
 
+    # < ----------------元素操作 - --------------->
+
+
+    #< ----------------用例通用步骤 - --------------->
     # 普通登录组合方法
     def login(self, username, password):
         self.open()
@@ -55,6 +64,6 @@ class LoginPage(BasePage):
         self.input_password(password)
         self.submit()
 
-    # 打开网页
-    def open(self):
-        self._open(self.baseUrl)
+    # < ----------------用例通用步骤 - --------------->
+
+
