@@ -9,19 +9,14 @@ description: 基类页面，封装其他所有页面所用到的公用属性和�
 
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-# import unittest
-# from selenium import  webdriver
-# from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver import  ActionChains
 class BasePage(object):
 
     def __init__(self,seleniumDriver, baseUrl="https://console.huilianyi.com/#/login"):
+        #初始化驱动或baseURL
         self.driver = seleniumDriver
-        # create capabilities
-        # capabilities = DesiredCapabilities.CHROME
         self.baseUrl = baseUrl
-        # self.driver=webdriver.Remote(command_executor='http://47.100.188.71:4444/wd/hub',
-        #     desired_capabilities=capabilities)
-        #self.pageTitle = pageTitle
+
 
 
     # 通过title断言进入的页面是否正确
@@ -70,3 +65,18 @@ class BasePage(object):
     # 定义script方法，用于执行js脚本，返回执行结果
     def script(self, src):
         self.driver.execute_script(src)
+
+
+    #<------------------以下是鼠标通用方法------------------------>
+    def hovering(self,to_element):
+        # 鼠标悬停
+        """
+                Moving the mouse to the middle of an element.
+
+                :Args:
+                 - to_element: The WebElement to move to.
+        """
+        mouse=ActionChains(driver=self.driver)
+        mouse.move_to_element(to_element).perform()
+
+    #< ------------------以下是鼠标通用方法 - ----------------------->
