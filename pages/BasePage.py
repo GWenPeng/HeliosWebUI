@@ -10,12 +10,14 @@ description: 基类页面，封装其他所有页面所用到的公用属性和�
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver import  ActionChains
+from selenium import webdriver
 class BasePage(object):
 
     def __init__(self,seleniumDriver, baseUrl="https://console.huilianyi.com/#/login"):
         #初始化驱动或baseURL
         self.driver = seleniumDriver
         self.baseUrl = baseUrl
+        self.Elements=None
 
 
 
@@ -44,6 +46,24 @@ class BasePage(object):
             return self.driver.find_element(*loc)
         except:
             print("未找到元素")
+            # 定位页面元素的方法
+
+    def findElements(self, locs):
+            try:
+                WebDriverWait(self.driver, 100).until(ec.visibility_of_element_located(locs))
+                self.Elements=self.driver.find_elements(*locs)
+                return self.driver.find_elements(*locs)
+            except:
+                print("未找到元素")
+
+    def text_name(self):
+        #获取元素的内部文本：
+        return self.Elements.text
+
+    def tag_name(self):
+        #获取元素的标签名称：
+        return self.Elements.tag_name
+
 
     # 封装send_keys方法
     def sendKeys(self, loc, value, locateFirst=False, clearFirst=False):
