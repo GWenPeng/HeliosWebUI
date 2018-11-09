@@ -38,7 +38,7 @@ if __name__ == '__main__':
         file_result.close()
 
     except Exception as e:
-        module_logger.info('测试报告生成失败')
+        module_logger.exception("测试报告生成失败",exc_info=True)
     else:
         module_logger.info('测试报告生成成功')
         module_logger.info('邮件正在发送')
