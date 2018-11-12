@@ -33,7 +33,7 @@ class LoginPage(BasePage):
     # 企业登陆的下一步按钮
     nextStep_loc = (By.XPATH, "//*[@id='app']/div/div[1]/div[2]/div[1]/div/div/button")
     # < ----------------页面上的元素 - --------------->
-
+    user_name = (By.CSS_SELECTOR, ".user-name")
 
     # < ----------------元素操作 - --------------->
     # 输入用户名
@@ -48,6 +48,11 @@ class LoginPage(BasePage):
     # 点击登录按钮
     def submit(self):
         self.findElement(self.loginButton_loc).click()
+
+    # 获取登录用户名
+    def user_name_in(self):
+        user_name = self.findElement(self.user_name).text
+        return user_name
 
     # 打开网页
     def open(self):
