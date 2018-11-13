@@ -44,13 +44,13 @@ class Workflow_Formlistpage(BasePage):
     def Click_company_modelbutton(self):
         self.findElement(self.company_model).click()
     # 点击确认按钮
-    def confirmbutton(self):
+    def Click_confirmbutton(self):
         self.findElement(self.confirm_button).click()
     # 点击设置按钮
-    def setbutton(self):
+    def Click_setbutton(self):
         self.findElement(self.set_button).click()
     # 点击审批流按钮
-    def workflowbutton(self):
+    def Click_workflowbutton(self):
         self.findElement(self.workflow_button).click()
     # 点击启用按钮
     def Click_Enablebutton(self):
@@ -77,8 +77,8 @@ class Workflow_Formlistpage(BasePage):
         # 进入审批流的组合方法
     def Enter_workflow(self):
             self.Click_adminbutton()
-            self.company_model()
-            self.confirm_button()
-            self.setbutton()
-            self.workflowbutton()
+            self.Click_company_modelbutton()
+            self.Click_confirmbutton()
+            self.Click_setbutton()
+            self.Click_workflowbutton()
     # < ----------------用例通用步骤 - --------------->
