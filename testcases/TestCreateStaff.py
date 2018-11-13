@@ -1,7 +1,7 @@
 from pages.StaffManagementPage import StaffManagement
 from  testcases.DefaultTest import DefaulTest
 from  pages.LoginPage import LoginPage
-import  time
+# import  time
 import common.mainModule
 import logging
 import  unittest
@@ -11,9 +11,9 @@ class TestCreateStaff(DefaulTest):
    def test_create_staff_success(self):
 
         lg = LoginPage(seleniumDriver=self.driver, baseUrl=self.url)
-        lg.login("13323454321", "hly123")
+        lg.login("15773250001", "hly123")
         cs = StaffManagement()
-        time.sleep(4)
+        # time.sleep(4)
         cs.click_staff()
         module_logger.info("进入到员工管理页面")
         cs.create_staff("1109003", "自动化测试新增3", "stage", "1", "stage测试", "1109003@sina.com",
