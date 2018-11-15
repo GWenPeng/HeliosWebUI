@@ -7,19 +7,28 @@ description: 登陆成功的首页
 '''
 from selenium.webdriver.common.by import By
 from .BasePage import BasePage
-from api.Get_Oauth_Token_Api import GetOauthTokenApi
+#from api.Get_Oauth_Token_Api import GetOauthTokenApi
 from api.Get_Enble_Expense_FormLists_Api import Get_Enble_Expense_FormLists_Api
 
 class HomePage(BasePage):
+    # def __init__(self,seleniumDriver, baseUrl=""):
+    #     self.driver=super
+    #     pass
     # <----------------以下为页面上element---------------->
     Dashboard= (By.CSS_SELECTOR, "#app > div > div.helios-sider.ant-layout-sider > div > div.menu-container > ul > li.ant-menu-item.ant-menu-item-selected > div")
     #仪表盘 element
-    Expense_Report=(By.CSS_SELECTOR, "#app > div > div.helios-sider.ant-layout-sider > div > div.menu-container > ul > li.ant-menu-submenu.ant-menu-submenu-inline.ant-menu-submenu-open > div > span > span")
+    Expense_Report=(By.XPATH,"//*[@id='app']/div/div[1]/div/div[2]/ul/li[3]/div")
     #报销单 element
-    My_Expense_Claim = (By.CSS_SELECTOR,'#expense-parent-report\24 Menu > li > div')
+    My_Expense_Claim = (By.CSS_SELECTOR,"#expense-parent-report\\24 Menu > li")
     # 我的报销单 element
-    New_Expense_Report=(By.CSS_SELECTOR,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/button')
+    New_Expense_Report=(By.CSS_SELECTOR,'#app > div > div.content-layout.ant-layout > div.helios-content.ant-layout-content > div > div.table-header > div.table-header-buttons > button')
     # 新建报销单 element
+    Group_Mode =(By.CSS_SELECTOR,'#app > div > div.helios-sider.ant-layout-sider > div > div.company-name > span')
+    #集团模式 element
+    Change_Company =(By.CSS_SELECTOR,'body > div:nth-child(10) > div > div > ul > li')
+    #切换公司模式 element
+    Change_Gruop =(By.CSS_SELECTOR,'body > div:nth-child(10) > div > div > ul > li:nth-child(1)')
+    #切换集团模式 element
 
     # <----------------以下为页面上element--------------->
     # |
@@ -37,7 +46,16 @@ class HomePage(BasePage):
 
     def move_to_new_expense_report(self):
         #移动鼠标至新建报销单
-        self.hovering(self.New_Expense_Report)
+        el=self.findElement(self.New_Expense_Report)
+        self.hovering(el)
+
+    def click_group_mode(self):
+        #点击集团模式
+        self.findElement(self.Group_Mode).click()
+
+    def click_change_company(self):
+        #点击切换公司
+        self.findElement(self.Change_Company).click()
 
     def find_daily_expense_report(self,index):
 

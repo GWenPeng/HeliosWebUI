@@ -2,6 +2,7 @@ from  pages.LoginPage import LoginPage
 from  testcases.DefaultTest import DefaulTest
 import  common.mainModule
 import logging
+import  unittest
 module_logger = logging.getLogger("mainModule.DefaultTest.Testlogin")
 class TestLogin(DefaulTest):
      def test_Login_success(self):
@@ -14,3 +15,10 @@ class TestLogin(DefaulTest):
         # except :
         #      module_logger.exception("登陆失败", exc_info=True)
         #      return  False
+
+if __name__ == '__main__':
+    suite = unittest.TestSuite()
+    suite.addTest(TestLogin('test_Login_success'))
+    # suite.run(testsuite)
+    runner = unittest.TextTestRunner(verbosity=2) #// 详细模式
+    runner.run(suite)

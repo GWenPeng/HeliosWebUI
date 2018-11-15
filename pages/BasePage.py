@@ -19,6 +19,7 @@ class BasePage(object):
 
 
 
+
     # 通过title断言进入的页面是否正确
     def check_page_title(self, pageTitle):
         return pageTitle in self.driver.title()
@@ -26,7 +27,7 @@ class BasePage(object):
     # 打开页面，并校验页面链接是否加载正确
     def _open(self,url):
         self.driver.get(url)
-        # self.driver.maximize_window()
+        self.driver.maximize_window()
 
 
         # assert self.checkPageTitle(pageTitle), u"打开页面失败 %s"%url
