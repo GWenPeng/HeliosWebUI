@@ -19,7 +19,7 @@ class DefaulTest(unittest.TestCase):
         cls.driver.implicitly_wait(30)
         cls.driver.set_window_size(width="1920", height="1080")
         # cls.driver.maximize_window()
-        # cls.driver.minimize_window() 由于服务器不支持chrome未70版本不支持该方法，需要使用可以用cls.driver.set_window_size(1098,100)
+        # cls.driver.minimize_window() 由于服务器chrome是70版本不支持该方法，需要使用可以用cls.driver.set_window_size(1098,100)
 
 
         # logger = logging.getLogger("mainModule.sub.module")
