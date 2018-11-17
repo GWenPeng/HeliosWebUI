@@ -12,8 +12,8 @@ from selenium.webdriver.common.keys import Keys
 
 
 class StaffManagement(BasePage):
-    def __init__(self):
-        pass
+    # def __init__(self):
+    #     pass
     # <----------------页面上的元素---------------->
     # 管理员模式按钮
     admin_submit = (By.XPATH, "//*[@id='app']/div/div[2]/div[1]/div[2]/button[2]")
