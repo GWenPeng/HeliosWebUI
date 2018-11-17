@@ -29,6 +29,10 @@ class HomePage(BasePage):
     #切换公司模式 element
     Change_Gruop =(By.CSS_SELECTOR,'body > div:nth-child(10) > div > div > ul > li:nth-child(1)')
     #切换集团模式 element
+    Toast_Submit=(By.CSS_SELECTOR,'body > div:nth-child(11) > div > div.ant-modal-wrap > div > div.ant-modal-content > div.ant-modal-footer > div > button.ant-btn.ant-btn-primary')
+    #切换集团公司的弹窗确认按钮 element
+    Application =(By.CSS_SELECTOR,'#app > div > div.helios-sider.ant-layout-sider > div > div.menu-container > ul > li:nth-child(4) > div')
+    #申请单 element
 
     # <----------------以下为页面上element--------------->
     # |
@@ -57,8 +61,28 @@ class HomePage(BasePage):
         #点击切换公司
         self.findElement(self.Change_Company).click()
 
+    def click_toast_submit(self):
+        #切换集团公司的弹窗确认按钮
+        self.findElement(self.Toast_Submit).click()
+
+    def click_application(self):
+        #点击申请单
+        self.findElement(self.Application).click()
+
     def find_daily_expense_report(self,index):
 
         pass
 
 # < ----------------以上为元素操作 ----------------->
+
+# < ----------------以下为组合操作 ----------------->
+    def ChangeCompany(self):
+        #切换至公司模式
+        self.findElement(self.Group_Mode).click()
+        self.findElement(self.Change_Company).click()
+        self.findElement(self.Toast_Submit).click()
+
+
+
+
+# < ----------------以上为组合操作 ----------------->
