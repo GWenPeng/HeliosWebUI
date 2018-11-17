@@ -5,6 +5,7 @@ created on Sep.28 2018
 @author: guwenpeng
 description: 登陆成功的首页
 '''
+
 from selenium.webdriver.common.by import By
 from .BasePage import BasePage
 #from api.Get_Oauth_Token_Api import GetOauthTokenApi
@@ -75,14 +76,4 @@ class HomePage(BasePage):
 
 # < ----------------以上为元素操作 ----------------->
 
-# < ----------------以下为组合操作 ----------------->
-    def ChangeCompany(self):
-        #切换至公司模式
-        self.findElement(self.Group_Mode).click()
-        self.findElement(self.Change_Company).click()
-        self.findElement(self.Toast_Submit).click()
 
-
-
-
-# < ----------------以上为组合操作 ----------------->
