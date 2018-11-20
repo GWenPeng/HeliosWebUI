@@ -41,6 +41,7 @@ class HomePage(BasePage):
     # |
     # |
     # < ----------------以下为元素操作 ----------------->
+
     def click_expense_report(self):
         #点击报销
         self.findElement(self.Expense_Report).click()
@@ -70,9 +71,9 @@ class HomePage(BasePage):
         #点击申请单
         self.findElement(self.Application).click()
 
-    def find_daily_expense_report(self,index):
-
-        pass
+    # def find_daily_expense_report(self,index):
+    #
+    #     pass
 
 # < ----------------以上为元素操作 ----------------->
 
