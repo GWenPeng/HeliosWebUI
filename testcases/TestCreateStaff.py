@@ -12,7 +12,7 @@ class TestCreateStaff(DefaulTest):
 
         lg = LoginPage(seleniumDriver=self.driver, baseUrl=self.url)
         lg.login("15773250001", "hly123")
-        cs = StaffManagement()
+        cs = StaffManagement(seleniumDriver=self.driver, baseUrl=self.url)
         # time.sleep(4)
         cs.click_staff()
         module_logger.info("进入到员工管理页面")

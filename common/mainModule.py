@@ -15,24 +15,23 @@ logger.setLevel(logging.INFO)
 
 
         #创建一个handler,用于写入日志文件
+#print(log_path)
+        # file_hanlder = logging.FileHandler(filename='example.log', encoding='utf-8')
 rq=time.strftime('%Y%m%d%H%M',time.localtime(time.time()))
 log_path=os.path.abspath('.')+'/logs/'
-        #print(log_path)
-        # file_hanlder = logging.FileHandler(filename='example.log', encoding='utf-8')
 log_name=log_path+rq+'.log'
-
 formatter = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
 handler =logging.FileHandler(log_name,encoding='utf-8')
 handler.setLevel(logging.INFO)
 handler.setFormatter(formatter)
-
 console =logging.StreamHandler()
 console.setLevel(logging.INFO)
 console.setFormatter(formatter)
-
-#给logger添加handler
+#写入文件handler
 logger.addHandler(handler)
+#控制台输出
 logger.addHandler(console)
+
 
     # def getlog(self):
     #     return self.logger

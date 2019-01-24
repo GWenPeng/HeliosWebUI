@@ -33,7 +33,8 @@ if __name__ == '__main__':
     file_result=open(file_path,'wb')
 
     try:
-        running=common.HTMLTestRunner.HTMLTestRunner(stream=file_result,title=u'helios测试报告',verbosity=2,description=u'用例执行情况')
+        running=common.HTMLTestRunner.HTMLTestRunner(stream=file_result,title=u'helios测试报告',
+        verbosity=2,description=u'用例执行情况')
         running.run(discover)
         file_result.close()
 
